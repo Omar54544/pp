@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Quieres salir conmigo?</title>
+  <style>
+    body {
+      background: #0078d4;
+      color: white;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    .botones {
+      position: relative;
+      height: 150px; /* Área fija para los botones */
+      width: 80%;
+      margin: 0 auto;
+    }
+    button {
+      font-size: 1.5em;
+      padding: 10px 30px;
+      margin: 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    #si {
+      background-color: #28a745;
+      color: white;
+    }
+    #no {
+      background-color: #dc3545;
+      color: white;
+      position: absolute;
+    }
+    #respuesta {
+      font-size: 2em;
+      margin-top: 40px;
+    }
+    #contenido {
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="contenido">
+    <h1>¿Quieres salir conmigo, rata?</h1>
+    <div class="botones">
+      <button id="si" onclick="responderSi()">Sí</button>
+      <button id="no" onmouseover="moverNo()">No</button>
+    </div>
+  </div>
+  <div id="respuesta"></div>
+  
+  <script>
+    // Posicionar el botón "No" inicialmente
+    window.onload = function() {
+      moverNo();
+    };
+
+    function moverNo() {
+      const no = document.getElementById("no");
+      const botonesDiv = document.querySelector(".botones");
+      const maxX = botonesDiv.offsetWidth - no.offsetWidth - 40;
+      const maxY = botonesDiv.offsetHeight - no.offsetHeight - 20;
+      
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      
+      no.style.left = x + "px";
+      no.style.top = y + "px";
+    }
+    
+    function responderSi() {
+      document.getElementById("contenido").style.display = "none";
+      document.getElementById("respuesta").textContent =
+        "¡¿Ves?! Yo sabía que querías salir conmigo, rata inmunda 😂❤️";
+    }
+  </script>
+</body>
+</html>
